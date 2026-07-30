@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mukundan M | Software Engineer & Developer</title>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b0f17;
+            --bg-card: rgba(22, 30, 46, 0.7);
+            --bg-card-hover: rgba(30, 41, 59, 0.8);
+            --border-glow: rgba(16, 185, 129, 0.3);
+            --primary-accent: #10b981;
+            --secondary-accent: #3b82f6;
+            --accent-gold: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-code: 'Fira Code', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary-accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Container Wrapper */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 60px 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-avatar-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .hero-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary-accent);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+            overflow: hidden;
+        }
+
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: -8px;
+            right: -8px;
+            background: #0f172a;
+            border: 1px solid var(--primary-accent);
+            color: var(--primary-accent);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-pulse {
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-accent);
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text .subtitle {
+            font-family: var(--font-code);
+            color: var(--primary-accent);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 650px;
+            margin-bottom: 20px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-accent);
+            color: #0b0f17;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-muted);
+        }
+
+        /* Section Layouts */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title i {
+            color: var(--primary-accent);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Skill Pills */
+        .skill-pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-pill {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--primary-accent);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-family: var(--font-code);
+            font-weight: 600;
+        }
+
+        /* Experience Timeline Card */
+        .timeline-card {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 24px;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-accent);
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .role-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .company-name {
+            color: var(--primary-accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            font-family: var(--font-code);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .timeline-body {
+            list-style: none;
+        }
+
+        .timeline-body li {
+            position: relative;
+            padding-left: 18px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+        }
+
+        .timeline-body li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+        }
+
+        /* Metric Progress Widget */
+        .metric-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .metric-bar-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .metric-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            border-radius: 3px;
+        }
+
+        /* Modern Footer */
+        footer {
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px 0;
+            background: rgba(11, 15, 23, 0.95);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-info p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 868px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Mukundan M</a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-avatar-wrapper">
+                <div class="hero-avatar">
+                    <img src="Profile.jpeg" alt="Mukundan M">
+                </div>
+                <div class="status-badge">
+                    <span class="status-pulse"></span> Open to Roles
+                </div>
+            </div>
+            <div class="hero-text">
+                <div class="subtitle">// COMPUTER SCIENCE ENGINEER</div>
+                <h1>Mukundan M</h1>
+                <p>Building high-performance software solutions, immersive 3D Unreal Engine environments, and predictive machine learning architectures.</p>
+                <div class="hero-cta">
+                    <a href="mailto:mukundh7477@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+                    <a href="https://github.com/Mukundan2005" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://linkedin.com/in/mukundan-murali-53367b2ba/" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Summary Section -->
+        <h2 id="about" class="section-title"><i class="fa-solid fa-user-gear"></i> About Me</h2>
+        <div class="glass-card">
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Aspiring Software Engineer and Computer Science student at Anna University (MIT Campus) with specialized experience in game testing, 3D interactive mechanics, and machine learning models. Proficient in translating complex data into actionable software solutions with a focus on cross-functional teamwork, product reliability, and project delivery.
+            </p>
+        </div>
+
+        <!-- Skills & Competencies -->
+        <h2 id="skills" class="section-title"><i class="fa-solid fa-layer-group"></i> Skills & Capabilities</h2>
+        <div class="grid-2">
+            <!-- Technical Stack Pills -->
+            <div class="glass-card">
+                <h3 style="font-size: 1rem; margin-bottom: 14px; color: var(--text-main);">Technical Stack</h3>
+                <div class="skill-pill-container">
+                    <span class="skill-pill">Python</span>
+                    <span class="skill-pill">Unreal Engine 5</span>
+                    <span class="skill-pill">Blender</span>
+                    <span class="skill-pill">HTML5 / CSS3</span>
+                    <span class="skill-pill">SQL Basics</span>
+                    <span class="skill-pill">Figma</span>
+                    <span class="skill-pill">Qiskit</span>
+                    <span class="skill-pill">Machine Learning</span>
+                    <span class="skill-pill">MS Office / Excel</span>
+                    <span class="skill-pill">Photo/Video Editing</span>
+                </div>
+            </div>
+
+            <!-- Soft Skill Strengths -->
+            <div class="glass-card">
+                <h3 style="font-size: 1rem; margin-bottom: 14px; color: var(--text-main);">Core Metrics</h3>
+                <div class="metric-box">
+                    <div class="metric-label">
+                        <span>Communication & Leadership</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">
+                        <span>Presentation & Technical Writing</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">
+                        <span>Problem Solving & Analytics</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 100%;"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Timeline -->
+        <h2 id="experience" class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+        <div class="glass-card">
+            
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <div>
+                        <div class="role-title">Game Development Intern</div>
+                        <div class="company-name">Imercfy Private Limited (Offline)</div>
+                    </div>
+                    <div class="timeline-date">May 2025</div>
+                </div>
+                <ul class="timeline-body">
+                    <li>Contributed to "Endless Runner: Game Development in Unreal Engine 5", leading ideation and visual scripting mechanics.</li>
+                    <li>Gained hands-on expertise in Unreal Engine 5 gameplay logic, performance optimization, and bug troubleshooting.</li>
+                    <li>Collaborated with team members in an offline studio setting to ensure build stability.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-card" style="margin-bottom: 0;">
+                <div class="timeline-header">
+                    <div>
+                        <div class="role-title">Machine Learning Intern</div>
+                        <div class="company-name">WrkFarm, Bangalore (Online)</div>
+                    </div>
+                    <div class="timeline-date">June 2024 – July 2024</div>
+                </div>
+                <ul class="timeline-body">
+                    <li>Led an ML project focused on agricultural optimization using satellite imagery and environmental datasets.</li>
+                    <li>Built custom predictive crop models from scratch to aid real-time decision-making.</li>
+                    <li>Handled dataset preprocessing, algorithm integration, and feature scaling for real-world applications.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Featured Projects -->
+        <h2 id="projects" class="section-title"><i class="fa-solid fa-diagram-project"></i> Key Projects</h2>
+        <div class="grid-3">
+            
+            <div class="glass-card">
+                <h3 style="font-size: 1rem; color: var(--primary-accent); margin-bottom: 6px;">BB84 Quantum Simulation</h3>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Simulated BB84 Quantum Key Distribution using Python & Qiskit to showcase secure quantum key exchange protocols.</p>
+                <span class="skill-pill" style="font-size: 0.7rem;">Python / Qiskit</span>
+            </div>
+
+            <div class="glass-card">
+                <h3 style="font-size: 1rem; color: var(--primary-accent); margin-bottom: 6px;">BookLog Platform</h3>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Responsive web platform allowing users to log reading metrics and track progress by chapter with custom dashboards.</p>
+                <span class="skill-pill" style="font-size: 0.7rem;">HTML5 / CSS3</span>
+            </div>
+
+            <div class="glass-card">
+                <h3 style="font-size: 1rem; color: var(--primary-accent); margin-bottom: 6px;">E-Voting System</h3>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Blockchain-based e-voting platform engineered for transaction integrity, audit verification, and voting security.</p>
+                <span class="skill-pill" style="font-size: 0.7rem;">Blockchain / Web</span>
+            </div>
+
+        </div>
+
+        <!-- Education & Volunteer Roles -->
+        <h2 id="education" class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education & Leadership</h2>
+        <div class="grid-2">
+            <!-- Education Glass Box -->
+            <div class="glass-card">
+                <h3 style="font-size: 1rem; margin-bottom: 12px;"><i class="fa-solid fa-university" style="color: var(--primary-accent);"></i> Academic Track</h3>
+                <div style="margin-bottom: 12px;">
+                    <div style="font-weight: 700; font-size: 0.95rem;">B.E. Computer Science & Engineering</div>
+                    <div style="font-size: 0.82rem; color: var(--text-muted);">Madras Institute of Technology, Anna University</div>
+                    <div style="font-size: 0.82rem; color: var(--primary-accent); font-family: var(--font-code);">2022 – 2026</div>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.95rem;">Higher Secondary Education</div>
+                    <div style="font-size: 0.82rem; color: var(--text-muted);">Petit Seminaire Higher Secondary School, Puducherry</div>
+                    <div style="font-size: 0.82rem; color: var(--primary-accent); font-family: var(--font-code);"></div>
+                </div>
+            </div>
+
+            <!-- Leadership Roles Glass Box -->
+            <div class="glass-card">
+                <h3 style="font-size: 1rem; margin-bottom: 12px;"><i class="fa-solid fa-users" style="color: var(--primary-accent);"></i> Leadership & Activities</h3>
+                <ul class="timeline-body">
+                    <li><strong>Internal Affairs Head:</strong> Student Entrepreneurship Club (AUSEC).</li>
+                    <li><strong>Organizing Volunteer:</strong> National Sports Organisation (NSO).</li>
+                    <li><strong>Active Member:</strong> Photo Society of MIT (PSMIT).</li>
+                    <li><strong>Languages Known:</strong> Tamil (Native), English (Fluent).</li>
+                    <li><strong>Hobbies:</strong> Photography, Gaming, Music.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-info">
+                <p><strong>Mukundan M</strong> — Rainbow Nagar, Puducherry - 605 011</p>
+                <p>Phone: +91 78678 26999 | Email: mukundh7477@gmail.com</p>
+            </div>
+            <div class="footer-socials">
+                <a href="https://github.com/Mukundan2005" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/mukundan-murali-53367b2ba/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:mukundh7477@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
